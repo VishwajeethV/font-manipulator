@@ -1,6 +1,6 @@
 canvas 
   {
-    border:5px solid white;
+    border:5px,dashed midnightblue;
     border-radius:20px;
     box-shadow:10px 10px 10px grey;
   }
@@ -13,4 +13,5 @@ canvas
     width: 100%;
     text-align: center;
     height: 5%;
+    font-size: 30px;
   }
