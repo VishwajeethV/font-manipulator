@@ -1,3 +1,10 @@
+difference = "";
+rightwristx = "";
+leftwristx ="";
+
+
+
+
 function setup() {
     video = createCapture(VIDEO);
     video.size(400, 400); 
@@ -10,7 +17,25 @@ function setup() {
 
 function modelLoaded() {
     console.log("posenet is intialized");
+    difference=floor(leftwristx-rightwristx);
+    console.log(difference);
 }
+
+
+
+function draw() {
+    background("#000080");
+    fill("#808080");
+    stroke("white");
+    textSize(difference);
+    text("font manipulator",leftwristx,rightwristx);
+    rect(300,400,100,100);
+}
+
+
+
+
+
 
 
 function gotposes(results) {
@@ -18,7 +43,5 @@ function gotposes(results) {
         console.log(results);
         leftwristx=results[0].pose.leftWrist.x;
         rightwristx=results[0].pose.rightWrist.x;
-        difference=floor(leftwristx-rightwristx);
-        console.log(difference);
     }
 }
