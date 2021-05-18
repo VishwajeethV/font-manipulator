@@ -12,7 +12,7 @@ function setup() {
     canvas = createCanvas(400, 400);
     canvas.position(500,100);
     posenet=ml5.poseNet(video,modelLoaded);
-    posenet.on('pose',getposes);
+    posenet.on('pose',gotposes);
 }
 
 function modelLoaded() {
