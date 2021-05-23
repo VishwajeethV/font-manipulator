@@ -1,8 +1,12 @@
 difference = "";
 rightwristx = "";
 leftwristx ="";
+word ="";
 
-
+function getext() {
+    word=document.getElementById("123").value;
+    console.log(word);
+}
 
 
 function setup() {
@@ -10,17 +14,14 @@ function setup() {
     video.size(400, 400); 
     video.position(); 
     canvas = createCanvas(400, 400);
-    canvas.position(500,100);
+    canvas.position(500,150);
     posenet=ml5.poseNet(video,modelLoaded);
-    posenet.on('pose',gotposes);
+    posenet.on('pose',getposes);
 }
 
 function modelLoaded() {
     console.log("posenet is intialized");
-    difference=floor(leftwristx-rightwristx);
-    console.log(difference);
 }
-
 
 
 function draw() {
@@ -28,7 +29,7 @@ function draw() {
     fill("#808080");
     stroke("white");
     textSize(difference);
-    text("font manipulator",leftwristx,rightwristx);
+    text(word,leftwristx,rightwristx);
     rect(300,400,100,100);
 }
 
@@ -38,10 +39,13 @@ function draw() {
 
 
 
-function gotposes(results) {
+function getposes(results) {
     if(results.length > 0) {
         console.log(results);
         leftwristx=results[0].pose.leftWrist.x;
         rightwristx=results[0].pose.rightWrist.x;
+        difference=floor(leftwristx-rightwristx);
+        console.log(difference);
     }
-}
+    }
+
